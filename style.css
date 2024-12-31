@@ -1,12 +1,17 @@
 :root{
     --bcg-color: #001122;
     --primary-color: #155e75;
+    --border-radius: 8px;
+    --secondary-color: #fff;
+    --border-color: #7fb7c9;
+
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    
 }
 body{
     width: 100%;
@@ -18,4 +23,26 @@ body{
 }
 .box{
     background-color: var(--primary-color);
+    padding: 30px;
+    width: 400px;
+    border-radius: var(--border-radius);
+} 
+.qr-header h1{
+    font-size: 26px;
+    text-align: center;
+    color: var(--secondary-color);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+.qr-header input{
+    width: 100%;
+    margin-block: 12px;
+}
+.qr-header input, select{
+    padding: 8px;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    outline: none;
+    border: 2px solod var(--border-color);
+
 }
