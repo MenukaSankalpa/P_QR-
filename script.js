@@ -11,6 +11,7 @@ generateBtn.addEventListener('click',(e)=>{
 });
 
 function generateQRCode(){
+    qrContainer.innerHTML = "";
     new QRCode(qrContainer, {
         text:qrText.value,
         height:size,
