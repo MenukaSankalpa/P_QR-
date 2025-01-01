@@ -14,7 +14,8 @@ sizes.addEventListener('change',(e)=>{
     size = e.target.value;
     generateQRCode();
 });
-function generateQRCode(){
+
+function generateQRCode() {
     qrContainer.innerHTML = "";
     new QRCode(qrContainer, {
         text:qrText.value,
