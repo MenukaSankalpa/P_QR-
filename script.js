@@ -7,7 +7,13 @@ const qrContainer = document.querySelector('.qr-body');
 let size = sizes.value;
 generateBtn.addEventListener('click',(e)=>{
     e.preventDefault();
-    generateQRCode();
+    if(qrText.value.length > 0){
+        generateQRCode();
+    }
+    else{
+        alert("Enter the text or URL to generate your")
+    }
+    
 });
 
 sizes.addEventListener('change',(e)=>{
