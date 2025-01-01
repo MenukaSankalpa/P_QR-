@@ -11,7 +11,7 @@ generateBtn.addEventListener('click',(e)=>{
         generateQRCode();
     }
     else{
-        alert("Enter the text or URL to generate your")
+        alert("Enter the text or URL to generate your QR Code");
     }
     
 });
