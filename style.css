@@ -78,3 +78,7 @@ body{
     margin-inline: 2px;
     cursor: pointer;
 } 
+.qr-body{
+    display: grid;
+    place-items: center;
+}
