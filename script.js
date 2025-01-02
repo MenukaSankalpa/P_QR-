@@ -4,50 +4,46 @@ const generateBtn = document.getElementById('generateBtn');
 const downloadBtn = document.getElementById('downloadBtn');
 const qrContainer = document.querySelector('.qr-body');
 
-let size = sizes.value;
-generateBtn.addEventListener('click',(e)=>{
-    e.preventDefault();
-    isEmptyInput();
-    
-});
+let size = parseInt(sizes.value); // Initialize with the default size.
 
-sizes.addEventListener('change',(e)=>{
-    size = e.target.value;
-    isEmptyInput();
+// Event Listeners
+generateBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     generateQRCode();
 });
 
-downloadBtn.addEventListener('click', ()=>{
-    let img = document.querySelector('.qr-body img');
-
-    if(img !== null){
-        let imgAtrr = img.getAttribute('src');
-        downloadBtn.setAttribute("href", imgAtrr);
+sizes.addEventListener('change', (e) => {
+    size = parseInt(e.target.value);
+    if (qrText.value.trim()) {
+        generateQRCode();
     }
-    else{
-         downloadBtn.setAttribute("href", "${document.querySelector('canvas').toDataURL()}");
-
-    }
-
 });
 
-function isEmptyInput(){
-    //if(qrText.value.length > 0){
-    //    generateQRCode();
-    //}
-    //else{
-    //    alert("Enter the text or URL to generate your QR Code"); 
-    //}
+downloadBtn.addEventListener('click', (e) => {
+    const qrImage = qrContainer.querySelector('img'); // Get the generated QR image.
+    if (qrImage) {
+        const imgSrc = qrImage.src; // Get the source of the QR image.
+        downloadBtn.setAttribute('href', imgSrc); // Set it as the download link.
+    } else {
+        alert('Please generate a QR Code before downloading!');
+        e.preventDefault();
+    }
+});
 
-    qrText.value.length > 0 ?  generateQRCode() : alert("Enter the text or URL to generate your QR Code");;
-} 
+// Functions
 function generateQRCode() {
-    qrContainer.innerHTML = "";
-    new QRCode(qrContainer, {
-        text:qrText.value,
-        height:size,
-        width:size,
-        colorLight:"#fff",
-        colorDark:"#000",
+    const text = qrText.value.trim();
+    if (!text) {
+        alert('Enter the text or URL to generate your QR Code');
+        return;
+    }
+
+    qrContainer.innerHTML = ""; // Clear previous QR Code.
+    const qrCode = new QRCode(qrContainer, {
+        text: text,
+        width: size,
+        height: size,
+        colorDark: "#000",
+        colorLight: "#fff",
     });
 }
